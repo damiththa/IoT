@@ -1,6 +1,7 @@
 (function () {
     "use strict";
     var MainController = function ($scope) {
+       
     };
     
     MainController.$inject = ['$scope'];
