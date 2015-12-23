@@ -1,0 +1,19 @@
+[
+    {
+        "trainno" : "123",
+        "timeOftheday" : "morning"
+    },
+    {
+        "trainno" : "456",
+        "timeOftheday" : "morning"
+    },
+    {
+        "trainno" : "789",
+        "timeOftheday" : "evening"
+    },
+        {
+        "trainno" : "321",
+        "timeOftheday" : "evening"
+    }
+    
+]

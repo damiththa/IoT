@@ -1,17 +1,35 @@
 (function () {
     "use strict";
-    var MainController = function ($scope, TrainViewFactory) {
-        var trainno = '9231';
+    var MainController = function ($scope, HelperService, TrainViewFactory) {
+        var trainno = '9231'; //temp value
         $scope.ThisTrain = null;
         
+//        $scope.today_dayOftheWeek = moment().day();
+//        $scope.IsWeekDay = (($scope.today_dayOftheWeek === 0) || ($scope.today_dayOftheWeek === 6)) ? false : true ;
+//        $scope.checkNowTime = moment($scope.nowHour).isBetween(12, 14);
+        
+        var promise = HelperService.getMyTrains();
+        promise.then(function (data){
+            $scope.myTrains = data;
+            console.log($scope.myTrains);
+            
+        })
+        
         function init() {
-            $scope.ThisTrain = TrainViewFactory.getThisTrain(trainno);
-        }
-        init();        
+            if($scope.IsWeekDay){
+                $scope.ThisTrain = TrainViewFactory.getThisTrain(trainno);
+            }
+        }        
+        init();
+        
+//        console.log($scope.nowHour);
+//        console.log($scope.checkNowTime);
+        
+        console.log($scope.IsWeekDay);
         console.log($scope.ThisTrain);
     };
     
-    MainController.$inject = ['$scope', 'TrainViewFactory'];
+    MainController.$inject = ['$scope', 'HelperService', 'TrainViewFactory'];
     
     angular.module('appSepta')
         .controller('MainController', MainController);
