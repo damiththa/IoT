@@ -4,26 +4,27 @@
         var trainno = '9231'; //temp value
         $scope.ThisTrain = null;       
         
-//      $scope.nowHour = moment().hour();
+        $scope.nowHour = moment().hour();
         $scope.today_dayOftheWeek = moment().day();
         $scope.IsWeekDay = (($scope.today_dayOftheWeek === 0) || ($scope.today_dayOftheWeek === 6)) ? false : true ;
-//        $scope.checkNowTime = moment($scope.nowHour).isBetween(12, 14);
+        $scope.checkTimeSlot = moment($scope.nowHour).isBetween(8, 11) ? 'morning' : 'evening';
         
-        if($scope.IsWeekDay){
-            var promise = HelperService.getMyTrains();
-            promise.then(function (data){
-                $scope.myTrains = data;                                
-            });
-        };
-        
+        //NOTE :  doesn't need to be in init()
         function init() {
             $scope.ThisTrain = TrainViewFactory.getThisTrain(trainno);
         }        
         init();
         
-//      console.log($scope.nowHour);
-//      console.log($scope.checkNowTime);        
-        console.log($scope.myTrains);
+        if($scope.IsWeekDay){
+            var promise = HelperService.getMyTrains();
+            promise.then(function (data){
+                $scope.myTrains = data;    
+                console.log($scope.myTrains);
+            });
+        };
+        
+        console.log($scope.nowHour);
+        console.log($scope.checkTimeSlot);        
         console.log($scope.IsWeekDay);
         console.log($scope.ThisTrain);
     };

@@ -1,22 +1,22 @@
 [
     {
         "trainno" : "123",
-        "timeOftheday" : "morning",
+        "timeSlot" : "morning",
         "trainSlot" : "slot1"
     },
     {
         "trainno" : "456",
-        "timeOftheday" : "morning",
+        "timeSlot" : "morning",
         "trainSlot" : "slot2"
     },
     {
         "trainno" : "789",
-        "timeOftheday" : "evening",
+        "timeSlot" : "evening",
         "trainSlot" : "slot3"
     },
         {
         "trainno" : "321",
-        "timeOftheday" : "evening",
+        "timeSlot" : "evening",
         "trainSlot" : "slot4"
     }
     
