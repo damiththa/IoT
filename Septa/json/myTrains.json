@@ -5,7 +5,7 @@
         "trainSlot" : "slot1"
     },
     {
-        "trainno" : "456",
+        "trainno" : "9231",
         "timeSlot" : "morning",
         "trainSlot" : "slot2"
     },
@@ -15,7 +15,7 @@
         "trainSlot" : "slot3"
     },
         {
-        "trainno" : "321",
+        "trainno" : "9238",
         "timeSlot" : "evening",
         "trainSlot" : "slot4"
     }
