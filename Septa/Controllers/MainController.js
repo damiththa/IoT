@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var MainController = function ($scope, HelperService, TrainViewFactory) {
+    var MainController = function ($scope, HelperService, TrainViewFactory, $http) {
         var trainno = '1111'; //temp value
         $scope.ThisTrain = null;   
         var lightOn = false;
@@ -37,7 +37,7 @@
 //                    console.log($scope.ThisTrain);                    
                     
                     if($scope.ThisTrain){ //avoid nulls
-                        if($scope.ThisTrain.late > 5){ //train late threshold
+                        if($scope.ThisTrain.late > 5){ //train late threshold (in minutes)
                             lightOn = true;
                             break;
                         };
@@ -46,8 +46,23 @@
                 
 //                console.log(lightOn);
                 if(lightOn){
-                    //NOTE: This is where you post to littebits
-                    console.log('Train is late');
+                    console.log('Train is LATE ');
+                    //LittleBits post
+                    $http({
+                        url: 'https://api-http.littlebitscloud.cc/devices/00e04c0340b5/output?percent=50&duration_ms=5000',
+                        method: 'POST',
+                        headers: {
+                            'Authorization' : 'Bearer 75480d214b46ed685b139dc49ddaf7d1cbd0af94f585e31cd5f76ef5d7d908a4',
+                            'Accept' : 'application/vnd.littlebits.v2+json',
+                            'Content-Type' : 'application/json'
+                        }
+                    }).success(function (data, status, headers, config) {
+                        //handle success
+                        console.log('This is a success '); 
+                    }).error(function (data, status, headers, config) {
+                        //handle error
+                        console.log('This is an error ');
+                    });
                 }
                 
             });
@@ -59,7 +74,7 @@
 //        console.log($scope.ThisTrain);
     };
     
-    MainController.$inject = ['$scope', 'HelperService', 'TrainViewFactory'];
+    MainController.$inject = ['$scope', 'HelperService', 'TrainViewFactory', '$http'];
     
     angular.module('appSepta')
         .controller('MainController', MainController);
