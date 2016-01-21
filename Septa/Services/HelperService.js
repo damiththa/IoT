@@ -1,17 +1,28 @@
 (function () {
     "use strict";   
     var HelperService = function ($http, $q) {
-        var deferObject;
         var HelperMethods = {
             getMyTrains: function(){
-                var promise = $http.get('json/myTrains.json');
-                deferObject = deferObject || $q.defer();
+                var deferObject_myTrains;
+                var myTrains_promise = $http.get('json/myTrains.json');
+                deferObject_myTrains = deferObject_myTrains || $q.defer();
                 
-                promise.then(function(data){
-                    deferObject.resolve(data);
+                myTrains_promise.then(function(data){
+                    deferObject_myTrains.resolve(data);
                 });
                 
-                return deferObject.promise;
+                return deferObject_myTrains.promise;
+            },
+            getSeptaTrains: function(){
+                var deferObject_SeptaTrains;
+                var SeptaTrains_Promise = $http.jsonp('http://www3.septa.org/hackathon/TrainView/');
+                deferObject_SeptaTrains = deferObject_SeptaTrains || $q.defer();
+                
+                SeptaTrains_Promise.then(function(data){
+                    deferObject_SeptaTrains.resolve(data);
+                });
+                
+                return deferObject_SeptaTrains.promise;
             }
         };
         return HelperMethods;

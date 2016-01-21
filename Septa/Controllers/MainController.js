@@ -17,8 +17,8 @@
 //        init();
         
         if($scope.IsWeekDay){
-            var promise = HelperService.getMyTrains();
-            promise.then(function (data){
+            var myTrains_PromiseReturn = HelperService.getMyTrains();
+            myTrains_PromiseReturn.then(function (data){
                 $scope.myTrains = data;    
 //                console.log($scope.myTrains);
                 
@@ -37,7 +37,7 @@
 //                    console.log($scope.ThisTrain);                    
                     
                     if($scope.ThisTrain){ //avoid nulls
-                        if($scope.ThisTrain.late > 5){ //train late threshold (in minutes)
+                        if($scope.ThisTrain.late > 3){ //train late threshold (in minutes)
                             lightOn = true;
                             break;
                         };
