@@ -20,6 +20,9 @@
                 
                 SeptaTrains_Promise.then(function(data){
                     deferObject_SeptaTrains.resolve(data);
+                },
+                function(status){
+                    console.log(status);
                 });
                 
                 return deferObject_SeptaTrains.promise;
