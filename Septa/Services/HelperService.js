@@ -15,14 +15,11 @@
             },
             getSeptaTrains: function(){
                 var deferObject_SeptaTrains;
-                var SeptaTrains_Promise = $http.jsonp('http://www3.septa.org/hackathon/TrainView/');
+                var SeptaTrains_Promise = $http.jsonp('http://www3.septa.org/hackathon/TrainView?callback=JSON_CALLBACK');
                 deferObject_SeptaTrains = deferObject_SeptaTrains || $q.defer();
                 
                 SeptaTrains_Promise.then(function(data){
                     deferObject_SeptaTrains.resolve(data);
-                },
-                function(status){
-                    console.log(status);
                 });
                 
                 return deferObject_SeptaTrains.promise;
