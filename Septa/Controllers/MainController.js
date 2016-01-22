@@ -16,14 +16,6 @@
 //        }        
 //        init();
         
-        //Testing SEPTA call back
-        var AAA = HelperService.getSeptaTrains();
-            AAA.then(function (data){
-                $scope.BBB = data;  
-                console.log($scope.BBB);
-            });
-        
-        
         if($scope.IsWeekDay){
             var myTrains_PromiseReturn = HelperService.getMyTrains();
             myTrains_PromiseReturn.then(function (data){
@@ -45,7 +37,7 @@
 //                    console.log($scope.ThisTrain);                    
                     
                     if($scope.ThisTrain){ //avoid nulls
-                        if($scope.ThisTrain.late > 3){ //train late threshold (in minutes)
+                        if($scope.ThisTrain.late > 1){ //train late threshold (in minutes)
                             lightOn = true;
                             break;
                         };
