@@ -20,6 +20,9 @@
                 
                 SeptaTrains_Promise.then(function(data){
                     deferObject_SeptaTrains.resolve(data);
+                },
+                function(error){ //error
+                    deferObject_SeptaTrains.reject('There was a problem with Septa API');
                 });
                 
                 return deferObject_SeptaTrains.promise;
