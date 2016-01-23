@@ -9,8 +9,12 @@
         
         
       
-        var Trains = HelperService.getSeptaTrains();
-        console.log(Trains);  
+        var Trains_PromiseReturn = HelperService.getSeptaTrains(); 
+        Trains_PromiseReturn.then(function(data){
+            var Trains_data = data;
+            var Trains = Trains_data.data;
+            console.log(Trains);
+        });
        
         var factory = {};
         
