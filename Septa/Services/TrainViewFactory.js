@@ -7,17 +7,15 @@
 //            {"lat": "39.88648", "lon": "-75.31239", "trainno": "9231", "service": "LOCAL", "dest": "Marcus Hook", "nextstop": "Ridley Park", "late": 5, "SOURCE": "Temple U", "TRACK": "", "TRACK_CHANGE": ""}, 
 //            {"lat": "39.84893", "lon": "-75.36160", "trainno": "9238", "service": "LOCAL", "dest": "Temple U", "nextstop": "Eddystone", "late": 10, "SOURCE": "Wilmington", "TRACK": "", "TRACK_CHANGE": ""}];
         
-        
-      
         var Trains_PromiseReturn = HelperService.getSeptaTrains(); 
         Trains_PromiseReturn.then(function(data){
             var Trains_data = data;
             var Trains = Trains_data.data;
             console.log(Trains);
         });
-       
+
         var factory = {};
-        
+
         factory.getTrains = function () {
             return Trains;
         };

@@ -33,8 +33,9 @@
                 
                 for(var b=0, l=$scope.TrainForNow.length; b<l; b++){
                     trainno = $scope.TrainForNow[b];
+                    
                     $scope.ThisTrain = TrainViewFactory.getThisTrain(trainno);
-//                    console.log($scope.ThisTrain);                    
+                    console.log($scope.ThisTrain);                    
                     
                     if($scope.ThisTrain){ //avoid nulls
                         if($scope.ThisTrain.late > 1){ //train late threshold (in minutes)
