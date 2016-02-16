@@ -1,23 +1,22 @@
 [
     {
-        "trainno" : "123",
-        "timeSlot" : "morning",
-        "trainSlot" : "slot1"
+        "trainno" : "9212",
+        "timeSlot" : "morning"
     },
     {
-        "trainno" : "9231",
-        "timeSlot" : "morning",
-        "trainSlot" : "slot2"
+        "trainno" : "9218",
+        "timeSlot" : "morning"
+    },    
+    {
+        "trainno" : "9251",
+        "timeSlot" : "evening"
     },
     {
-        "trainno" : "9294",
-        "timeSlot" : "evening",
-        "trainSlot" : "slot3"
+        "trainno" : "4257",
+        "timeSlot" : "evening"
     },
-        {
+    {
         "trainno" : "5265",
-        "timeSlot" : "evening",
-        "trainSlot" : "slot4"
+        "timeSlot" : "morning"
     }
-    
 ]
