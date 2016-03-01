@@ -47,14 +47,14 @@
                         console.log($scope.ThisTrain);  
 
                         if($scope.ThisTrain){ //avoid nulls
-                            if($scope.ThisTrain.late > 1){ //train late threshold (in minutes)
+                            if($scope.ThisTrain.late > 2){ //train late threshold (in minutes)
                                 lightOn = true;
                                 break;
                             };
                         };
                     };
                     
-                    console.log(lightOn);
+                    //console.log(lightOn);
                     if(lightOn){
                         console.log('Train is LATE ');
                         //LittleBits post
