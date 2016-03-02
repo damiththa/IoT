@@ -2,12 +2,28 @@
 <html lang="en-us" ng-app="appSepta">
 <head>
     <title>Septa Train Check App</title>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/custom/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.8/font-awesome-animation.min.css">
+    <link rel="stylesheet" type="text/css" href="Styles/mainStyle.css">
 </head>
 <body>
-    <div ng-controller="MainController">
-        {{6+3}}
-        
-        {{myTrains.data}}
+    <div ng-controller="MainController">        
+        <div class="jumbotron vertical-center">
+            <div class="container text-center">
+                <div class="alert alert-info" role="alert">
+                    Checking you <strong><u>{{checkTimeSlot}}</u></strong> trains ... &nbsp; <i class="fa fa-train faa-passing animated"></i>
+                </div>
+                <div ng-show="!isLate" class="alert alert-success" role="alert">
+                    <i class="fa fa-thumbs-up faa-bounce animated"></i>&nbsp;You are good to go. <br>
+                    All of your trains seems to be on time. 
+                </div>
+                <div ng-show="isLate" class="alert alert-danger" role="alert">
+                    <i class="fa fa-exclamation-triangle faa-flash animated"></i>&nbsp;Oh snap! <br>
+                    Seems like your train #. <strong><u>{{ThisTrain.trainno}}</u></strong> is <strong><u>{{ThisTrain.late}}</u></strong> mins late. Bummer. 
+                </div>
+            </div>
+        </div>
         
     </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
