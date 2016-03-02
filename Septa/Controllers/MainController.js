@@ -1,8 +1,9 @@
 (function () {
     "use strict";
-    var MainController = function ($scope, HelperService, TrainViewFactory, $http) {
+    var MainController = function ($scope, HelperService, TrainViewFactory, $http, $timeout) {
         var trainno = '1111'; //temp value
         $scope.ThisTrain = null;   
+        var TrainIsLate = false; //default value
         var lightOn = false;
         
         $scope.nowHour = moment().hour();
@@ -56,20 +57,50 @@
                     
                     //console.log(lightOn);
                     if(lightOn){
-                      $http({
-                          url : 'https://api-http.littlebitscloud.cc/devices/00e04c0340b5/output?percent=50&duration_ms=5000', 
-                          method : 'POST',
-                          headers : {
-                              'Authorization' : 'Bearer 75480d214b46ed685b139dc49ddaf7d1cbd0af94f585e31cd5f76ef5d7d908a4',
-                              'Accept' : 'application/vnd.littlebits.v2+json',
-                              'Content-Type' : 'application/json'
-                          }
-                        }).then(function SuccesFunc(response) { //handle success                      
-                          console.log('This is a success ');
-                        }, function ErrorFunc(response) { //handle error                          
-                          console.log('This is an error ');
-                      });                        
-                    };                    
+                      TrainIsLate = true;
+                        
+//                      THIS IS GOOD
+                        //Trigger LittleBits CloudBits    
+//                      $http({
+//                          url : 'https://api-http.littlebitscloud.cc/devices/00e04c0340b5/output?percent=50&duration_ms=5000', 
+//                          method : 'POST',
+//                          headers : {
+//                              'Authorization' : 'Bearer 75480d214b46ed685b139dc49ddaf7d1cbd0af94f585e31cd5f76ef5d7d908a4',
+//                              'Accept' : 'application/vnd.littlebits.v2+json',
+//                              'Content-Type' : 'application/json'
+//                          }
+//                        }).then(function SuccesFunc(response) { //handle success                      
+//                          console.log('This is a success ');
+//                        }, function ErrorFunc(response) { //handle error                          
+//                          console.log('This is an error ');
+//                      });
+//                      //Trigger IFTTT and Maker to send notification    
+//                      $http({
+//                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S', 
+//                          method : 'POST',
+//                          headers : {                              
+//                              'Content-Type' : 'application/json'
+//                          },
+//                          data : {
+//                              'value1' : '123', //$scope.ThisTrain.trainno,
+//                              'value2' : '5' //$scope.ThisTrain.late
+//                          }
+//                        }).then(function SuccesFunc(response) { //handle success                      
+//                          console.log('This is a success ');
+//                        }, function ErrorFunc(response) { //handle error                          
+//                          console.log('This is an error ');
+//                      });    
+                    };
+                    
+                    $timeout(function() {
+                        $scope.isLate = TrainIsLate;
+                    }, 2000); 
+
+                    
+//                    $scope.isLate = function(){
+//                        return TrainIsLate;
+//                    };
+                    
                 });
             });
         };
@@ -80,7 +111,7 @@
 //        console.log($scope.ThisTrain);
     };
     
-    MainController.$inject = ['$scope', 'HelperService', 'TrainViewFactory', '$http'];
+    MainController.$inject = ['$scope', 'HelperService', 'TrainViewFactory', '$http', '$timeout'];
     
     angular.module('appSepta')
         .controller('MainController', MainController);
