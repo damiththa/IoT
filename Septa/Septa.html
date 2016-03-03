@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en-us" ng-app="appSepta">
 <head>
+    <meta http-equiv="refresh" content="30">
     <title>Septa Train Check App</title>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/custom/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
@@ -12,8 +13,10 @@
         <div class="jumbotron vertical-center">
             <div class="container text-center">
                 <div class="alert alert-info" role="alert">
-                    Checking you <strong><u>{{checkTimeSlot}}</u></strong> trains ... &nbsp; <i class="fa fa-train faa-passing animated"></i>
-                </div>
+                    Checking your <strong><u>{{checkTimeSlot}}</u></strong> trains ... &nbsp; <i class="fa fa-train faa-passing animated"></i><br>
+                    <small><i>(Page will update and check your trains every 5 mins.)</i></small><br>
+                    <i ng-if="isLoading" class="fa fa-refresh fa-lg fa-spin"></i>
+                </div>                
                 <div ng-show="!isLate" class="alert alert-success" role="alert">
                     <i class="fa fa-thumbs-up faa-bounce animated"></i>&nbsp;You are good to go. <br>
                     All of your trains seems to be on time. 
