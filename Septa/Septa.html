@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en-us" ng-app="appSepta">
+<link rel="icon" type="image/jpeg" href="Images/favicon-train.ico">
 <head>
     <meta http-equiv="refresh" content="300">
     <title>Septa Train Check App</title>
@@ -14,7 +15,7 @@
             <div class="container text-center">
                 <div class="alert alert-info" role="alert">
                     Checking your <strong><u>{{checkTimeSlot}}</u></strong> trains ... &nbsp; <i class="fa fa-train faa-passing animated"></i><br>
-                    <small><i>(Page will update and check your trains every 5 mins.)</i></small><br>
+                    <small><i>(Page automatically checks and update your trains every 5 mins.)</i></small><br>
                     <i ng-if="isLoading" class="fa fa-refresh fa-lg fa-spin"></i>
                 </div>                
                 <div ng-show="!isLate" class="alert alert-success" role="alert">
