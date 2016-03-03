@@ -4,6 +4,7 @@
         var trainno = '1111'; //temp value
         $scope.ThisTrain = null;   
         var TrainIsLate = false; //default value
+        $scope.isLoading = true; //default value
         var lightOn = false;
         
         $scope.nowHour = moment().hour();
@@ -31,8 +32,7 @@
                 };
                 
 //                console.log($scope.TrainForNow);
-                
-                
+                                
                 var Trains_PromiseReturn = HelperService.getSeptaTrains(); 
                 Trains_PromiseReturn.then(function(data){
                     var Trains_data = data;
@@ -50,14 +50,14 @@
                         if($scope.ThisTrain){ //avoid nulls
                             if($scope.ThisTrain.late > 2){ //train late threshold (in minutes)
                                 lightOn = true;
+                                TrainIsLate = true;
                                 break;
                             };
                         };
                     };
                     
                     //console.log(lightOn);
-                    if(lightOn){
-                      TrainIsLate = true;
+                    if(lightOn){                      
                         
 //                      THIS IS GOOD
                         //Trigger LittleBits CloudBits    
@@ -93,8 +93,9 @@
                     };
                     
                     $timeout(function() {
+                        $scope.isLoading = false;
                         $scope.isLate = TrainIsLate;
-                    }, 2000); 
+                    }, 3500); 
 
                     
 //                    $scope.isLate = function(){
