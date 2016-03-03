@@ -56,6 +56,26 @@
                         };
                     };
                     
+                    //TEMP
+                    $http({
+                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S', 
+                          method : 'POST',
+                          headers : {                              
+                              'Content-Type' : 'application/json'
+                          },
+                          data : {
+                              'value1' : '123', //$scope.ThisTrain.trainno,
+                              'value2' : '5' //$scope.ThisTrain.late
+                          }
+                        }).then(function SuccesFunc(response) { //handle success                    
+                          console.log('This is a success ');
+                        }, function ErrorFunc(response) { //handle error                          
+                          console.log('This is an error ');
+                      });
+                    
+                    
+                    
+                    
                     //console.log(lightOn);
                     if(lightOn){                      
                         
@@ -85,7 +105,7 @@
 //                              'value1' : '123', //$scope.ThisTrain.trainno,
 //                              'value2' : '5' //$scope.ThisTrain.late
 //                          }
-//                        }).then(function SuccesFunc(response) { //handle success                      
+//                        }).then(function SuccesFunc(response) { //handle success                    
 //                          console.log('This is a success ');
 //                        }, function ErrorFunc(response) { //handle error                          
 //                          console.log('This is an error ');
