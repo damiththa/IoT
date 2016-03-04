@@ -4,7 +4,13 @@
         var HelperMethods = {
             getMyTrains: function(){
                 var deferObject_myTrains;
-                var myTrains_promise = $http.get('json/myTrains.json');
+                var myTrains_promise = $http.get('https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/Trains?callback=JSON_CALLBACK', {
+                    headers : {
+                        'Authorization' : 'Bearer keyDH7kBvN03bIM3o',
+                        'Content-Type' : 'application/json'
+                    }
+                });
+//                var myTrains_promise = $http.get('json/myTrains.json'); to use a local json file
                 deferObject_myTrains = deferObject_myTrains || $q.defer();
                 
                 myTrains_promise.then(function(data){
