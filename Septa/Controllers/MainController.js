@@ -56,7 +56,7 @@
                         };
                     };
                     
-                    TEMP
+//                    TEMP
                     $http({
                           url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S', 
                           method : 'POST',
