@@ -1,0 +1,5 @@
+Resource List,
+1. LittleBits ~ cloudBit APT --> http://developers.littlebitscloud.cc/
+2. IFTTT --> http://ifttt.com/
+3. WebScript --> https://www.webscript.io
+4. Septa --> http://www3.septa.org/
