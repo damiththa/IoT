@@ -56,16 +56,12 @@
                         };
                     };
                     
-//                    TEMP
+//                    TEMP                             
                     $http({
-                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S', 
+                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S?value1='+$scope.ThisTrain.trainno+'&value2='+$scope.ThisTrain.late, 
                           method : 'POST',
-                          headers : {                              
+                          headers : {
                               'Content-Type' : 'application/json'
-                          },
-                          data : {
-                              'value1' : '123', //$scope.ThisTrain.trainno,
-                              'value2' : '5' //$scope.ThisTrain.late
                           }
                         }).then(function SuccesFunc(response) { //handle success                    
                           console.log('This is a success ');
