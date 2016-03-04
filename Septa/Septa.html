@@ -3,6 +3,7 @@
 <link rel="icon" type="image/jpeg" href="Images/favicon-train.ico">
 <head>
     <meta http-equiv="refresh" content="300">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Septa Train Check App</title>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/custom/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
@@ -13,19 +14,20 @@
     <div ng-controller="MainController">        
         <div class="jumbotron vertical-center">
             <div class="container text-center">
-                <div class="alert alert-info" role="alert">
+                <div class="col-xs-12 alert alert-info" role="alert">
                     Checking your <strong><u>{{checkTimeSlot}}</u></strong> trains ... &nbsp; <i class="fa fa-train faa-passing animated"></i><br>
                     <small><i>(Page automatically checks and update your trains every 5 mins.)</i></small><br>
                     <i ng-if="isLoading" class="fa fa-refresh fa-lg fa-spin"></i>
                 </div>                
-                <div ng-show="!isLate" class="alert alert-success" role="alert">
+                <div ng-show="!isLate" class="col-xs-12 alert alert-success" role="alert">
                     <i class="fa fa-thumbs-up faa-bounce animated"></i>&nbsp;You are good to go. <br>
                     All of your trains seems to be on time. 
                 </div>
-                <div ng-show="isLate" class="alert alert-danger" role="alert">
+                <div ng-show="isLate" class="col-xs-12 alert alert-danger" role="alert">
                     <i class="fa fa-exclamation-triangle faa-flash animated"></i>&nbsp;Oh snap! <br>
                     Seems like your train #. <strong><u>{{ThisTrain.trainno}}</u></strong> is <strong><u>{{ThisTrain.late}}</u></strong> mins late. Bummer. 
                 </div>
+                <small>Code repository: <a href="https://github.com/damiththa/IoT/tree/master/Septa" target="_blank"><i class="fa fa-github"></i></a> </small>
             </div>
         </div>
         
