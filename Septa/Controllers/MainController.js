@@ -22,16 +22,18 @@
             var myTrains_PromiseReturn = HelperService.getMyTrains();
             myTrains_PromiseReturn.then(function (data){
                 $scope.myTrains = data;    
-//                console.log($scope.myTrains);
+//                console.log($scope.myTrains.data);
+//                console.log($scope.myTrains.data.records[1].fields.timeSlot);
+//                console.log($scope.myTrains.data.records.length);
                 
                 $scope.TrainForNow = []; //Trains for THIS timeSlot accordingly
-                for(var a=0, len=$scope.myTrains.data.length; a<len; a++){
-                    if($scope.myTrains.data[a].timeSlot === $scope.checkTimeSlot){
-                        $scope.TrainForNow.push($scope.myTrains.data[a].trainno);
+                for(var a=0, len=$scope.myTrains.data.records.length; a<len; a++){
+                    if($scope.myTrains.data.records[a].fields.timeSlot === $scope.checkTimeSlot){
+                        $scope.TrainForNow.push($scope.myTrains.data.records[a].fields.trainno);
                     }
                 };
                 
-//                console.log($scope.TrainForNow);
+                console.log($scope.TrainForNow);
                                 
                 var Trains_PromiseReturn = HelperService.getSeptaTrains(); 
                 Trains_PromiseReturn.then(function(data){
@@ -40,11 +42,14 @@
                     //console.log(Trains);
                     
                     for(var b=0, l=$scope.TrainForNow.length; b<l; b++){
+                        console.log('dgdgg');
                         console.log(Trains);
                         
                         trainno = $scope.TrainForNow[b];
                         
                         $scope.ThisTrain = TrainViewFactory.getThisTrain(Trains, trainno);
+                        console.log(trainno);
+                        console.log('nsnsnssn');
                         console.log($scope.ThisTrain);  
 
                         if($scope.ThisTrain){ //avoid nulls
@@ -56,19 +61,22 @@
                         };
                     };
                     
-//                    TEMP                             
-                    $http({
-                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S?value1='+$scope.ThisTrain.trainno+'&value2='+$scope.ThisTrain.late, 
-                          method : 'POST',
-                          headers : {
-                              'Content-Type' : 'application/json'
-                          }
-                        }).then(function SuccesFunc(response) { //handle success                    
-                          console.log('This is a success ');
-                        }, function ErrorFunc(response) { //handle error                          
-                          console.log('This is an error ');
-                      });
                     
+                    
+// 
+////                    TEMP -- work on maker post here                              
+//                    $http({
+//                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S?value1='+$scope.ThisTrain.trainno+'&value2='+$scope.ThisTrain.late, 
+//                          method : 'POST',
+//                          headers : {
+//                              'Content-Type' : 'application/json'
+//                          }
+//                        }).then(function SuccesFunc(response) { //handle success                    
+//                          console.log('This is a success ');
+//                        }, function ErrorFunc(response) { //handle error                          
+//                          console.log('This is an error ');
+//                      });
+//                    
                     
                     
                     
