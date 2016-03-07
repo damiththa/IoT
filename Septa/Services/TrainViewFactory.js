@@ -22,7 +22,7 @@
 
         factory.getThisTrain = function (Trains, trainno) {            
             for (var i=0,len=Trains.length; i<len; i++){
-                if (Trains[i].trainno === trainno) {
+                if (Trains[i].trainno == trainno) {
                     return Trains[i];
                 }
             }
