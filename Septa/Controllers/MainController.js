@@ -42,15 +42,13 @@
                     //console.log(Trains);
                     
                     for(var b=0, l=$scope.TrainForNow.length; b<l; b++){
-                        console.log('dgdgg');
-                        console.log(Trains);
+//                        console.log(Trains);
                         
                         trainno = $scope.TrainForNow[b];
                         
                         $scope.ThisTrain = TrainViewFactory.getThisTrain(Trains, trainno);
-                        console.log(trainno);
-                        console.log('nsnsnssn');
-                        console.log($scope.ThisTrain);  
+//                        console.log(trainno);
+//                        console.log($scope.ThisTrain);  
 
                         if($scope.ThisTrain){ //avoid nulls
                             if($scope.ThisTrain.late > 2){ //train late threshold (in minutes)
@@ -60,31 +58,10 @@
                             };
                         };
                     };
-                    
-                    
-                    
-// 
-////                    TEMP -- work on maker post here                              
-//                    $http({
-//                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S?value1='+$scope.ThisTrain.trainno+'&value2='+$scope.ThisTrain.late, 
-//                          method : 'POST',
-//                          headers : {
-//                              'Content-Type' : 'application/json'
-//                          }
-//                        }).then(function SuccesFunc(response) { //handle success                    
-//                          console.log('This is a success ');
-//                        }, function ErrorFunc(response) { //handle error                          
-//                          console.log('This is an error ');
-//                      });
-//                    
-                    
-                    
-                    
-                    //console.log(lightOn);
-                    if(lightOn){                      
-                        
-//                      THIS IS GOOD
-                        //Trigger LittleBits CloudBits    
+
+                    if(lightOn){  
+//                      //THIS IS GOOD
+//                      //Trigger LittleBits CloudBits    
 //                      $http({
 //                          url : 'https://api-http.littlebitscloud.cc/devices/00e04c0340b5/output?percent=50&duration_ms=5000', 
 //                          method : 'POST',
@@ -98,34 +75,25 @@
 //                        }, function ErrorFunc(response) { //handle error                          
 //                          console.log('This is an error ');
 //                      });
-//                      //Trigger IFTTT and Maker to send notification    
-//                      $http({
-//                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S', 
-//                          method : 'POST',
-//                          headers : {                              
-//                              'Content-Type' : 'application/json'
-//                          },
-//                          data : {
-//                              'value1' : '123', //$scope.ThisTrain.trainno,
-//                              'value2' : '5' //$scope.ThisTrain.late
-//                          }
-//                        }).then(function SuccesFunc(response) { //handle success                    
-//                          console.log('This is a success ');
-//                        }, function ErrorFunc(response) { //handle error                          
-//                          console.log('This is an error ');
-//                      });    
+                        
+                      //Trigger IFTTT and Maker to send notification    
+                      $http({
+                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S?value1='+$scope.ThisTrain.trainno+'&value2='+$scope.ThisTrain.late, 
+                          method : 'POST',
+                          headers : {                              
+                              'Content-Type' : 'application/json'
+                          }
+                        }).then(function SuccesFunc(response) { //handle success                    
+                          console.log('This is a success ');
+                        }, function ErrorFunc(response) { //handle error                          
+                          console.log('This is an error ');
+                      });    
                     };
                     
                     $timeout(function() {
                         $scope.isLoading = false;
                         $scope.isLate = TrainIsLate;
                     }, 3500); 
-
-                    
-//                    $scope.isLate = function(){
-//                        return TrainIsLate;
-//                    };
-                    
                 });
             });
         };
