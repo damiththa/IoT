@@ -10,7 +10,7 @@
         $scope.nowHour = moment().hour();
         $scope.today_dayOftheWeek = moment().day();
         $scope.IsWeekDay = (($scope.today_dayOftheWeek === 0) || ($scope.today_dayOftheWeek === 6)) ? false : true ;
-        $scope.checkTimeSlot = moment($scope.nowHour).isBetween(8, 11) ? 'morning' : 'evening';
+        $scope.checkTimeSlot = moment($scope.nowHour).isBetween(7, 11) ? 'morning' : 'evening';
         
 //        //NOTE :  doesn't need to be in init()
 //        function init() {
@@ -58,6 +58,20 @@
                             };
                         };
                     };
+                    
+                    //Temp
+                    $http({
+                      url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S?value1='+$scope.ThisTrain.trainno+'&value2='+$scope.ThisTrain.late, 
+                      method : 'POST',
+                      headers : {                              
+                          'Content-Type' : 'application/json'
+                      }
+                    }).then(function SuccesFunc(response) { //handle success                    
+                      console.log('This is a success ');
+                    }, function ErrorFunc(response) { //handle error                          
+                      console.log('This is an error ');
+                  });
+                    
 
                     if(lightOn){  
 //                      //THIS IS GOOD
@@ -76,18 +90,18 @@
 //                          console.log('This is an error ');
 //                      });
                         
-                      //Trigger IFTTT and Maker to send notification    
-                      $http({
-                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S?value1='+$scope.ThisTrain.trainno+'&value2='+$scope.ThisTrain.late, 
-                          method : 'POST',
-                          headers : {                              
-                              'Content-Type' : 'application/json'
-                          }
-                        }).then(function SuccesFunc(response) { //handle success                    
-                          console.log('This is a success ');
-                        }, function ErrorFunc(response) { //handle error                          
-                          console.log('This is an error ');
-                      });    
+//                      //Trigger IFTTT and Maker to send notification    
+//                      $http({
+//                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S?value1='+$scope.ThisTrain.trainno+'&value2='+$scope.ThisTrain.late, 
+//                          method : 'POST',
+//                          headers : {                              
+//                              'Content-Type' : 'application/json'
+//                          }
+//                        }).then(function SuccesFunc(response) { //handle success                    
+//                          console.log('This is a success ');
+//                        }, function ErrorFunc(response) { //handle error                          
+//                          console.log('This is an error ');
+//                      });    
                     };
                     
                     $timeout(function() {
