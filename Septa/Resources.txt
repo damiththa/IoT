@@ -1,6 +1,6 @@
 Resource List,
 1. LittleBits ++ to talk to CloutBit ++ http://developers.littlebitscloud.cc/
-2. IFTTT ++ to send IF Notitication ++ http://ifttt.com/
+2. Zapier ++ to send IF Notitication ++ http://zapier.com/
 3. WebScript ++ Cron Jobs ++  https://www.webscript.io
 4. Septa ++ to get real time train status ++ http://www3.septa.org/
 5. AirTable ++ to hold and produce my trains ++ www.airtable.com
