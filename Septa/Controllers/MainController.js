@@ -59,22 +59,35 @@
                         };
                     };
                     
-                    //Temp
-                    $http({
-                      url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S?value1='+$scope.ThisTrain.trainno+'&value2='+$scope.ThisTrain.late, 
-                      method : 'POST',
-                      headers : {                              
-                          'Content-Type' : 'application/json'
-                      }
-                    }).then(function SuccesFunc(response) { //handle success                    
-                      console.log('This is a success ');
-                    }, function ErrorFunc(response) { //handle error                          
-                      console.log('This is an error ');
-                  });
+                    //AirTable Update
+                    var XX = HelperService.updateAirTable($scope.ThisTrain);
+                    console.log(XX);
+                   
                     
+//                    //Temp - GOOD
+//                    $http({
+//                      url : 'https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/LateTrainsLog', 
+//                      method : 'POST',
+//                      headers : {                              
+//                          'Authorization' : 'Bearer keyDH7kBvN03bIM3o',
+//                          'Content-Type' : 'application/json'
+//                      },
+//                      data : {
+//                          "fields" : {
+//                            "trainno" : $scope.ThisTrain.trainno,
+//                            "timeSlot" :  $scope.checkTimeSlot,
+//                            "howLate" : $scope.ThisTrain.late+' mins.'   
+//                          }
+//                      }
+//                    }).then(function SuccesFunc(response) { //handle success                    
+//                      console.log('This is a success ');
+//                    }, function ErrorFunc(response) { //handle error                          
+//                      console.log('This is an error ');
+//                  });
+//                    
 
-                    if(lightOn){  
-//                      //THIS IS GOOD
+//                    //THIS IS GOOD
+//                    if(lightOn){                        
 //                      //Trigger LittleBits CloudBits    
 //                      $http({
 //                          url : 'https://api-http.littlebitscloud.cc/devices/00e04c0340b5/output?percent=50&duration_ms=5000', 
@@ -89,7 +102,7 @@
 //                        }, function ErrorFunc(response) { //handle error                          
 //                          console.log('This is an error ');
 //                      });
-                        
+//                        
 //                      //Trigger IFTTT and Maker to send notification    
 //                      $http({
 //                          url : 'https://maker.ifttt.com/trigger/TrainCheck/with/key/GJElXrQFbvHcF1OLmCK_S?value1='+$scope.ThisTrain.trainno+'&value2='+$scope.ThisTrain.late, 
@@ -102,8 +115,9 @@
 //                        }, function ErrorFunc(response) { //handle error                          
 //                          console.log('This is an error ');
 //                      });    
-                    };
+//                    };
                     
+                    //THIS IS GOOD
                     $timeout(function() {
                         $scope.isLoading = false;
                         $scope.isLate = TrainIsLate;
