@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var TrainViewFactory = function (HelperService) {
+    var TrainViewFactory = function () {
 //        var Trains = [
 //            {"lat": "39.96349", "lon": "-75.18513", "trainno": "829", "service": "LOCAL", "dest": "Chestnut H West", "nextstop": "North Philadelphia", "late": 2, "SOURCE": "Fox Chase", "TRACK": "", "TRACK_CHANGE": ""}, 
 //            {"lat": "40.005242", "lon": "-75.165902", "trainno": "832", "service": "LOCAL", "dest": "Fox Chase", "nextstop": "North Philadelphia", "late": 6, "SOURCE": "Chestnut H West", "TRACK": "", "TRACK_CHANGE": ""}, 
@@ -32,7 +32,7 @@
         return factory;
     };  
     
-    TrainViewFactory.$inject = ['HelperService'];
+    TrainViewFactory.$inject = [];
     
     angular.module('appSepta')
         .factory('TrainViewFactory', TrainViewFactory);
