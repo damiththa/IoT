@@ -34,8 +34,6 @@
                 return deferObject_SeptaTrains.promise;
             },
             updateAirTable: function(ThisTrain){
-                console.log(ThisTrain);  
-                var ABAB = '';
                 $http({
                       url : 'https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/LateTrainsLog', 
                       method : 'POST',
@@ -49,14 +47,9 @@
                             "howLate" : ThisTrain.late+' mins.'   
                           }
                       }
-                    }).then(function SuccesFunc(response) { //handle success                    
-                      console.log('This is a success ');
-                      ABAB = true;    
-                    }, function ErrorFunc(response) { //handle error                          
-                      console.log('This is an error ');
-                      ABAB = false;
-                });
-                return ABAB;
+                    }).catch(function(response){
+                        throw response.status;   
+                })
             }
         };
         return HelperMethods;
