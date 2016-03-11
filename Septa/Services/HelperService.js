@@ -50,6 +50,24 @@
                     }).catch(function(response){
                         throw response.status;   
                 })
+            },
+            QQQ: function(){
+                $http.get('https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/LateTrains?callback=JSON_CALLBACK', {
+                    headers : {
+                        'Authorization' : 'Bearer keyDH7kBvN03bIM3o',
+                        'Content-Type' : 'application/json'
+                    }
+                }).then(function(response){
+                    var MMM = response.data;                    
+                    console.log(MMM.records[0].id);
+                    console.log(MMM.records.length);
+                    
+//                    $http.delete('https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/LateTrains', {
+//                        headers : {
+//                            'Authorization' : 'Bearer keyDH7kBvN03bIM3o',
+//                        }
+//                    })
+                })
             }
         };
         return HelperMethods;
