@@ -60,8 +60,8 @@
                     };
                     
                     //AirTable Update
-                    var XX = HelperService.updateAirTable($scope.ThisTrain);
-                    console.log(XX);
+                    HelperService.updateAirTable($scope.ThisTrain);
+                    
                    
                     
 //                    //Temp - GOOD
