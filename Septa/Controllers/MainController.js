@@ -59,11 +59,17 @@
                         };
                     };
                     
-                    //AirTable Update
-                    HelperService.updateAirTable($scope.ThisTrain);
+                    //AirTable Update - TEMAP
+//                    HelperService.updateAirTable($scope.ThisTrain);
                     
-                   
-                    
+//                    $scope.QQQ().then(function(MMM){
+//                       console.log('success' MMM);
+//                    }, function(errMsg){
+//                        console.log(errMsg);
+//                    });
+//                    
+                    HelperService.QQQ();
+                                        
 //                    //Temp - GOOD
 //                    $http({
 //                      url : 'https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/LateTrainsLog', 
