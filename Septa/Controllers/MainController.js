@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var MainController = function ($scope, HelperService, TrainViewFactory, $http, $timeout) {
+    var MainController = function ($scope, HelperService, TrainViewFactory, AirTableService, $http, $timeout) {
         var trainno = '1111'; //temp value
         $scope.ThisTrain = null;   
         var TrainIsLate = false; //default value
@@ -19,7 +19,7 @@
 //        init();
         
         if($scope.IsWeekDay){
-            var myTrains_PromiseReturn = HelperService.getMyTrains();
+            var myTrains_PromiseReturn = AirTableService.getMyTrains();
             myTrains_PromiseReturn.then(function (data){
                 $scope.myTrains = data;    
 //                console.log($scope.myTrains.data);
@@ -68,7 +68,7 @@
 //                        console.log(errMsg);
 //                    });
 //                    
-                    HelperService.QQQ();
+                    AirTableService.QQQ();
                                         
 //                    //Temp - GOOD
 //                    $http({
@@ -138,7 +138,7 @@
 //        console.log($scope.ThisTrain);
     };
     
-    MainController.$inject = ['$scope', 'HelperService', 'TrainViewFactory', '$http', '$timeout'];
+    MainController.$inject = ['$scope', 'HelperService', 'TrainViewFactory', 'AirTableService', '$http', '$timeout'];
     
     angular.module('appSepta')
         .controller('MainController', MainController);
