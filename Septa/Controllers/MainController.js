@@ -52,6 +52,7 @@
 //                        console.log($scope.ThisTrain);  
                         
                         //TEMP
+                        console.log($scope.ThisTrain);
                         AirTableService.intoLateTrains($scope.ThisTrain); 
 
                         if($scope.ThisTrain){ //avoid nulls
