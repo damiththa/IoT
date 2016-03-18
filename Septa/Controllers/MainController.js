@@ -50,6 +50,9 @@
                         $scope.ThisTrain = TrainViewFactory.getThisTrain(Trains, trainno);
 //                        console.log(trainno);
 //                        console.log($scope.ThisTrain);  
+                        
+                        //TEMP
+                        AirTableService.intoLateTrains($scope.ThisTrain); 
 
                         if($scope.ThisTrain){ //avoid nulls
                             if($scope.ThisTrain.late > 2){ //train late threshold (in minutes)
