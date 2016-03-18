@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var MainController = function ($scope, HelperService, TrainViewFactory, AirTableService, $http, $timeout) {
+    var MainController = function ($scope, HelperService, TrainViewFactory, AirTableService, FireBaseFactory, $http, $timeout) {
         var trainno = '1111'; //temp value
         $scope.ThisTrain = null;   
         var TrainIsLate = false; //default value
@@ -33,8 +33,9 @@
                     }
                 };
                 
-                console.log($scope.TrainForNow);
-                                
+                console.log($scope.TrainForNow);             
+                AirTableService.removeLateTrains(); //delete all trains from LateTrains AirTable
+                
                 var Trains_PromiseReturn = HelperService.getSeptaTrains(); 
                 Trains_PromiseReturn.then(function(data){
                     var Trains_data = data;
@@ -53,7 +54,9 @@
                         if($scope.ThisTrain){ //avoid nulls
                             if($scope.ThisTrain.late > 2){ //train late threshold (in minutes)
                                 lightOn = true;
-                                TrainIsLate = true;
+                                TrainIsLate = true;                                
+                                AirTableService.intoLateTrains($scope.ThisTrain); //Into LateTrain
+                                FireBaseFactory.IntoFireBase($scope.ThisTrain); //Into FireBase 
                                 break;
                             };
                         };
@@ -68,7 +71,7 @@
 //                        console.log(errMsg);
 //                    });
 //                    
-                    AirTableService.QQQ();
+//                    AirTableService.QQQ();
                                         
 //                    //Temp - GOOD
 //                    $http({
@@ -138,7 +141,7 @@
 //        console.log($scope.ThisTrain);
     };
     
-    MainController.$inject = ['$scope', 'HelperService', 'TrainViewFactory', 'AirTableService', '$http', '$timeout'];
+    MainController.$inject = ['$scope', 'HelperService', 'TrainViewFactory', 'AirTableService', 'FireBaseFactory', '$http', '$timeout'];
     
     angular.module('appSepta')
         .controller('MainController', MainController);
