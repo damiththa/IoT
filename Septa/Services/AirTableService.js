@@ -46,16 +46,18 @@
                     }
                 }).then(function(response){
                     var lateTrain = response.data;                    
-                    console.log(lateTrain.records[0].id);
-                    console.log(lateTrain.records.length);
-                           
-                    for (var k=0,len=lateTrain.records.length; k<len; k++){
-                        $http.delete('https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/LateTrains/'+lateTrain.records[k].id, {
-                            headers : {
-                                'Authorization' : 'Bearer keyDH7kBvN03bIM3o',
-                            }
-                        });                                                
-                    };
+//                    console.log(lateTrain.records[0].id);
+//                    console.log(lateTrain.records.length);
+                    
+                    if(lateTrain.records.length>0){
+                        for (var k=0,len=lateTrain.records.length; k<len; k++){
+                            $http.delete('https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/LateTrains/'+lateTrain.records[k].id, {
+                                headers : {
+                                    'Authorization' : 'Bearer keyDH7kBvN03bIM3o',
+                                }
+                            });                                                
+                        };
+                    }
                 })
             }
         };
