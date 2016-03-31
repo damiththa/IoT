@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var MainController = function ($scope, HelperService, TrainViewFactory, AirTableService, FireBaseFactory, $http, $timeout) {
+    var MainController = function ($scope, HelperService, TrainViewFactory, AirTableService, FireBaseFactory, SecretsService, $http, $timeout) {
         var trainno = '1111'; //temp value
         $scope.ThisTrain = null;   
         var TrainIsLate = false; //default value
@@ -145,7 +145,7 @@
 //        console.log($scope.ThisTrain);
     };
     
-    MainController.$inject = ['$scope', 'HelperService', 'TrainViewFactory', 'AirTableService', 'FireBaseFactory', '$http', '$timeout'];
+    MainController.$inject = ['$scope', 'HelperService', 'TrainViewFactory', 'AirTableService', 'FireBaseFactory', 'SecretsService', '$http', '$timeout'];
     
     angular.module('appSepta')
         .controller('MainController', MainController);
