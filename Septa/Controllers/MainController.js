@@ -19,15 +19,15 @@
 //        init();
 
         //Getting secrets - Temp
-        var SecretsArr = [];
+        $scope.SecretsArr = [];
         var mySecrets_PromiseReturn = SecretsService.getSecrets();
         mySecrets_PromiseReturn.then(function(data){
             $scope.mySecrets = data;
             // console.log($scope.mySecrets);
-            SecretsArr = $scope.mySecrets;
-            console.log(SecretsArr);
+            $scope.SecretsArr = $scope.mySecrets.data;
+            console.log($scope.SecretsArr);
         });    
-        
+        console.log($scope.SecretsArr);
                     
         if($scope.IsWeekDay){
             var myTrains_PromiseReturn = AirTableService.getMyTrains();

@@ -8,7 +8,7 @@
                 deferObject_Secrets = deferObject_Secrets || $q.defer();
                 
                 Secrets_Promise.then(function(data){
-                    deferObject_Secrets.resolve(data);
+                    deferObject_Secrets.resolve(data);                   
                 },
                 function(error){ //error
                     deferObject_Secrets.reject('There was a problem w/ Secrets');
