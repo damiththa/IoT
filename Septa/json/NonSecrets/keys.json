@@ -14,6 +14,11 @@
           "id" : 3,
           "url" : "http://SeptaAPICall.org?callback=JSON_CALLBACK",
           "apikey" : "none"
+      },
+	  "LittleBits" : {
+          "id" : 4,
+          "url" : "http://LittleBitsAPICall.cc",
+          "apikey" : "Your LittleBits API Key"
       }
 	}
 }
