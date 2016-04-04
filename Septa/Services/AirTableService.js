@@ -2,11 +2,11 @@
     "use strict";   
     var AirTableService = function ($http, $q) {
         var AirTableMethods = {
-            getMyTrains: function(){
+            getMyTrains: function(AirTable_secret){
                 var deferObject_myTrains;
-                var myTrains_promise = $http.get('https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/Trains?callback=JSON_CALLBACK', {
+                var myTrains_promise = $http.get(AirTable_secret.url, {
                     headers : {
-                        'Authorization' : 'Bearer keyDH7kBvN03bIM3o',
+                        'Authorization' : AirTable_secret.apikey,
                         'Content-Type' : 'application/json'
                     }
                 });
