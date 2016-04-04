@@ -5,7 +5,7 @@
         var ref = new Firebase('https://iot-septa.firebaseio.com');
         var events = $firebaseArray(ref);
         
-        factory_FireBase.IntoFireBase = function(ThisTrain){
+        factory_FireBase.intoFireBase = function(ThisTrain){
 //            console.log(ThisTrain);
             return events.$add(ThisTrain);
         };
