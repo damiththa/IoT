@@ -37,10 +37,10 @@
                         }
                     };
                     
-                    console.log($scope.TrainForNow);             
-                    AirTableService.removeLateTrains(); //delete all trains from LateTrains AirTable
+                    // console.log($scope.TrainForNow);             
+                    AirTableService.removeLateTrains($scope.keys.AirTable); //delete all trains from LateTrains AirTable
                     
-                    var Trains_PromiseReturn = HelperService.getSeptaTrains(); 
+                    var Trains_PromiseReturn = HelperService.getSeptaTrains($scope.keys.Septa); 
                     Trains_PromiseReturn.then(function(data){
                         var Trains_data = data;
                         var Trains = Trains_data.data;
@@ -56,53 +56,20 @@
     //                        console.log($scope.ThisTrain);  
                             
                             //TEMP
-                            console.log($scope.ThisTrain);
-                            AirTableService.intoLateTrains($scope.ThisTrain); 
+                            // console.log($scope.ThisTrain);
+                            // AirTableService.intoLateTrains($scope.keys.AirTable, $scope.ThisTrain); 
 
                             if($scope.ThisTrain){ //avoid nulls
                                 if($scope.ThisTrain.late > 2){ //train late threshold (in minutes)
                                     lightOn = true;
                                     TrainIsLate = true;                                
-                                    AirTableService.intoLateTrains($scope.ThisTrain); //Into LateTrain
-                                    FireBaseFactory.IntoFireBase($scope.ThisTrain); //Into FireBase 
+                                    AirTableService.intoLateTrains($scope.keys.AirTable, $scope.ThisTrain); //Into LateTrain
+                                    FireBaseFactory.intoFireBase($scope.ThisTrain); //Into FireBase 
                                     break;
                                 };
                             };
                         };
                         
-                        //AirTable Update - TEMAP
-    //                    HelperService.updateAirTable($scope.ThisTrain);
-                        
-    //                    $scope.QQQ().then(function(MMM){
-    //                       console.log('success' MMM);
-    //                    }, function(errMsg){
-    //                        console.log(errMsg);
-    //                    });
-    //                    
-    //                    AirTableService.QQQ();
-                                            
-    //                    //Temp - GOOD
-    //                    $http({
-    //                      url : 'https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/LateTrainsLog', 
-    //                      method : 'POST',
-    //                      headers : {                              
-    //                          'Authorization' : 'Bearer keyDH7kBvN03bIM3o',
-    //                          'Content-Type' : 'application/json'
-    //                      },
-    //                      data : {
-    //                          "fields" : {
-    //                            "trainno" : $scope.ThisTrain.trainno,
-    //                            "timeSlot" :  $scope.checkTimeSlot,
-    //                            "howLate" : $scope.ThisTrain.late+' mins.'   
-    //                          }
-    //                      }
-    //                    }).then(function SuccesFunc(response) { //handle success                    
-    //                      console.log('This is a success ');
-    //                    }, function ErrorFunc(response) { //handle error                          
-    //                      console.log('This is an error ');
-    //                  });
-    //                    
-
     //                    //THIS IS GOOD
     //                    if(lightOn){                        
     //                      //Trigger LittleBits CloudBits    

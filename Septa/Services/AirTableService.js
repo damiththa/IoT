@@ -4,7 +4,7 @@
         var AirTableMethods = {
             getMyTrains: function(AirTable_secret){
                 var deferObject_myTrains;
-                var myTrains_promise = $http.get(AirTable_secret.url, {
+                var myTrains_promise = $http.get(AirTable_secret.url+'/Trains?callback=JSON_CALLBACK', {
                     headers : {
                         'Authorization' : AirTable_secret.apikey,
                         'Content-Type' : 'application/json'
@@ -19,12 +19,12 @@
                 
                 return deferObject_myTrains.promise;
             },            
-            intoLateTrains: function(ThisTrain){
+            intoLateTrains: function(AirTable_secret, ThisTrain){
                 $http({
-                      url : 'https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/LateTrains', 
+                      url : AirTable_secret.url+'/LateTrains', 
                       method : 'POST',
                       headers : {                              
-                          'Authorization' : 'Bearer keyDH7kBvN03bIM3o',
+                          'Authorization' : AirTable_secret.apikey,
                           'Content-Type' : 'application/json'
                       },
                       data : {
@@ -37,11 +37,11 @@
                         throw response.status;   
                 })
             },
-            removeLateTrains: function(){
+            removeLateTrains: function(AirTable_secret){
                 //getting current trains in LateTrains table
-                $http.get('https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/LateTrains?callback=JSON_CALLBACK', {
+                $http.get(AirTable_secret.url+'/LateTrains?callback=JSON_CALLBACK', {
                     headers : {
-                        'Authorization' : 'Bearer keyDH7kBvN03bIM3o',
+                        'Authorization' : AirTable_secret.apikey,
                         'Content-Type' : 'application/json'
                     }
                 }).then(function(response){
@@ -51,14 +51,14 @@
                     
                     if(lateTrain.records.length>0){
                         for (var k=0,len=lateTrain.records.length; k<len; k++){
-                            $http.delete('https://api.airtable.com/v0/app6bRhZ46dwM5aJJ/LateTrains/'+lateTrain.records[k].id, {
+                            $http.delete(AirTable_secret.url+'/LateTrains/'+lateTrain.records[k].id, {
                                 headers : {
-                                    'Authorization' : 'Bearer keyDH7kBvN03bIM3o',
+                                    'Authorization' : AirTable_secret.apikey
                                 }
                             });                                                
                         };
                     }
-                })
+                });
             }
         };
         return AirTableMethods;

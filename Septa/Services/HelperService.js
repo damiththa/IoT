@@ -2,9 +2,9 @@
     "use strict";   
     var HelperService = function ($http, $q) {
         var HelperMethods = {
-            getSeptaTrains: function(){
+            getSeptaTrains: function(Septa_secret){
                 var deferObject_SeptaTrains;
-                var SeptaTrains_Promise = $http.jsonp('http://www3.septa.org/hackathon/TrainView?callback=JSON_CALLBACK');
+                var SeptaTrains_Promise = $http.jsonp(Septa_secret.url);
                 deferObject_SeptaTrains = deferObject_SeptaTrains || $q.defer();
                 
                 SeptaTrains_Promise.then(function(data){
