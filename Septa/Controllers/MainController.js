@@ -70,6 +70,24 @@
                             };
                         };
                         
+                        if(lightOn){        
+                            //Trigger LittleBits CloudBits
+                            $http({
+                             url : $scope.keys.LittleBits.url, 
+                             method : 'POST',
+                             headers : {
+                                 'Authorization' : $scope.keys.LittleBits.apikey,
+                                 'Accept' : 'application/vnd.littlebits.v2+json',
+                                 'Content-Type' : 'application/json'
+                             }
+                           }).then(function SuccesFunc(response) { //handle success                      
+                             console.log('This is a success ');
+                           }, function ErrorFunc(response) { //handle error                          
+                             console.log('This is an error ');
+                         });   
+                        };                
+                        
+                        
     //                    //THIS IS GOOD
     //                    if(lightOn){                        
     //                      //Trigger LittleBits CloudBits    
@@ -101,7 +119,6 @@
     //                      });    
     //                    };
                         
-                        //THIS IS GOOD
                         $timeout(function() {
                             $scope.isLoading = false;
                             $scope.isLate = TrainIsLate;
