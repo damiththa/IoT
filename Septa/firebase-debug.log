@@ -1,0 +1,29 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      C:\Program Files\nodejs\node.exe C:\Users\Madushan\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] Platform:     win32
+[debug] Node Version: v4.4.0
+[debug] Time:         Wed Apr 13 2016 21:45:22 GMT-0400 (Eastern Daylight Time)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/firebase/iot-septa/token?token=XXX 
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/firebase/iot-septa/token?token=XXX 
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'iot-septa'...
+[info] 
+[info] i  deploying 
+[debug] >>> HTTP REQUEST POST https://deploy.firebase.com/firebase/iot-septa/releases?token=XXX
+[debug] TypeError: Cannot read property 'error' of undefined
+    at Request._callback (C:\Users\Madushan\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:31:22)
+    at Request.self.callback (C:\Users\Madushan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:200:22)
+    at emitTwo (events.js:87:13)
+    at Request.emit (events.js:172:7)
+    at Request.<anonymous> (C:\Users\Madushan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1046:10)
+    at emitOne (events.js:82:20)
+    at Request.emit (events.js:169:7)
+    at IncomingMessage.<anonymous> (C:\Users\Madushan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:973:12)
+    at emitNone (events.js:72:20)
+    at IncomingMessage.emit (events.js:166:7)
+[error] 
+[error] Error: An unexpected error has occurred.
