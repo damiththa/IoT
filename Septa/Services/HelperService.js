@@ -4,7 +4,7 @@
         var HelperMethods = {
             getSeptaTrains: function(Septa_secret){
                 var deferObject_SeptaTrains;
-                var SeptaTrains_Promise = $http.jsonp(Septa_secret.url);
+                var SeptaTrains_Promise = $http.jsonp(Septa_secret.url+'?callback=JSON_CALLBACK);
                 deferObject_SeptaTrains = deferObject_SeptaTrains || $q.defer();
                 
                 SeptaTrains_Promise.then(function(data){
