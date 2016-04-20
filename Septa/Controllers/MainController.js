@@ -26,7 +26,7 @@
                 var myTrains_PromiseReturn = AirTableService.getMyTrains($scope.keys.AirTable);
                 myTrains_PromiseReturn.then(function (data){
                     $scope.myTrains = data;    
-                   console.log($scope.myTrains.data);
+                //    console.log($scope.myTrains.data);
                 //    console.log($scope.myTrains.data.records[1].fields.timeSlot);
                 //    console.log($scope.myTrains.data.records.length);
                     
@@ -43,8 +43,8 @@
                     var Trains_PromiseReturn = HelperService.getSeptaTrains($scope.keys.Septa); 
                     Trains_PromiseReturn.then(function(data){
                         var Trains_data = data;
-                        var Trains = Trains_data.data;
-                        //console.log(Trains);
+                        var Trains = Trains_data.data.data;
+                        // console.log(Trains);
                         
                         for(var b=0, l=$scope.TrainForNow.length; b<l; b++){
     //                        console.log(Trains);
@@ -52,8 +52,8 @@
                             trainno = $scope.TrainForNow[b];
                             
                             $scope.ThisTrain = TrainViewFactory.getThisTrain(Trains, trainno);
-    //                        console.log(trainno);
-    //                        console.log($scope.ThisTrain);  
+                        //    console.log(trainno);
+                        //    console.log($scope.ThisTrain);  
                             
                             //TEMP
                             // console.log($scope.ThisTrain);
@@ -70,6 +70,7 @@
                             };
                         };
                         
+                        /* THIS IS GOOD
                         if(lightOn){        
                             //Trigger LittleBits CloudBits
                             $http({
@@ -85,7 +86,8 @@
                            }, function ErrorFunc(response) { //handle error                          
                              console.log('This is an error ');
                          });   
-                        };                
+                        };
+                        */                
                         
                         
     //                    //THIS IS GOOD
