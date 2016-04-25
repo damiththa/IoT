@@ -22,8 +22,9 @@
 
         factory.getThisTrain = function (Trains, trainno) {            
             // console.log(Trains);
+            // console.log(trainno);
             for (var i=0,len=Trains.length; i<len; i++){
-                if (Trains[i].id === trainno) {                    
+                if (Trains[i].trainno == trainno) {                    
                     return Trains[i];
                 }
             }
