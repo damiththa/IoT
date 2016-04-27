@@ -24,7 +24,7 @@
             // console.log(Trains);
             // console.log(trainno);
             for (var i=0,len=Trains.length; i<len; i++){
-                if (Trains[i].trainno == trainno) {                    
+                if ((Trains[i].trainno == trainno) && (Trains[i].dest != Trains[i].nextstop)) {                    
                     return Trains[i];
                 }
             }
