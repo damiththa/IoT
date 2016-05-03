@@ -30,7 +30,8 @@
                       data : {
                           "fields" : {
                             "trainno" : ThisTrain.trainno,                            
-                            "howLate" : ThisTrain.late+' mins.'   
+                            "howLate" : ThisTrain.late+' mins.',
+                            "nextStop" : ThisTrain.nextstop    
                           }
                       }
                     }).catch(function(response){
